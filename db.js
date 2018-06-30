@@ -43,23 +43,37 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies').then(response =
         
 
         
-       /*  currencies = [currency.results];
-        const tx = db.createObjectStore('countries', {keyPath: 'id'});
-        tx.createIndex("hours", "hours", {unique: false});
-        tx.createIndex("minutes", "minutes", {unique: false});
-
-
-        const store = tx.objectStore('countries');
-        
-
-        currencies.forEach(countrycurrency => {
-            for (let value in countrycurrency){
-                store.put(countrycurrency[value]);
-            }
-        });
-        return tx.complete; */
+       
     });
 });
 
 
+var dbPromise = idb.open('rate', 1, function(upgradeDb){
+    var tx = upgradeDb.createObjectStore('convert', {keyPath: 'id'});
+    tx.put('world', 'hello');
+});
+
+let rates
+fetch('https://free.currencyconverterapi.com/api/v5/convert').then(response => response.json()).then(function(converts) {
+    dbPromise.then(db => {
+        if(!db) return;
+
+        rates = [converts.results];
+
+        const ty = db.transaction('convert', 'readwrite');
+        const store = ty.objectStore('convert');
+
+        rates.forEach(countryrate => {
+            for (let value in countryrate){
+                store.put(countryrate[value]);
+            }
+        });
+        return ty.complete;
+
+        
+
+        
+       
+    });
+});
 // }
