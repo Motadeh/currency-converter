@@ -76,10 +76,10 @@ html{
 .drop1{
     cursor: pointer;
 }
-/* .items5{
+ /* .items5{
     position: relative;
-    display: inline-block; */
-}
+    display: inline-block; 
+} */
 .dropdown-contents {
     display: none;
     position:absolute;
@@ -99,4 +99,20 @@ html{
 } */
 .show{
     display:block;
+}
+.textline{
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #000000;
+}
+.dropdown1{
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #000000;
 }
