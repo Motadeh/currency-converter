@@ -2,6 +2,7 @@ function myfunction() {
     let from = document.getElementById("countries").value; ////getElementsByClassName retrieves all elements, you need the first one only with [0]
     let to = document.getElementById("countries2").value; //getElementsByClassName retrieves all elements, you need the first one only with [0]
     let fromAmount = document.getElementById("amount").value;
+    let toAmount = document.getElementById("amount2").value;
     // let toAmount        =   document.getElementById("toAmount");
     // you dont need this, you already declared it
     //let fromQuery       =   `${from}`;
@@ -13,19 +14,21 @@ function myfunction() {
             console.log(rates[rate]);
             let calc = rates[rate]; //You need to pass rate back into the object to get the value
             let total = (calc * fromAmount); //calculation
-            console.log(total);
-            toAmount.value = total;
+            console.log(total); 
+            // toAmount.value = total;
+            document.getElementById("toAmount").value = total;
 
-            localStorage.setItem(`${from}_${to}`, calc);
-        }
-    }).catch(function(){
-        const storedrate = localStorage.getItem(`${from}_${to}`);
-        if(storedrate){
-            let total = (storedrate * fromInput);
-            console.log(total)
-        }
-        else {
-            console.log ('not available')
+        dbPromise.then(db => {
+            const ty = db.transaction('rates', 'readwrite');
+            const ratestore = ty.objectStore('rates');
+
+            ratestore.put({
+                rate: calc,
+                id: `${from}_${to}`
+            });
+            return ty.complete;
+        });
+        return rate_value;
         }
     })
 }

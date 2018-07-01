@@ -60,6 +60,7 @@ fetch('https://free.currencyconverterapi.com/api/v5/convert').then(response => r
     dbPromise.then(db => {
         if(!db) return;
 
+        
         rates = [converts.results];
 
         const ty = db.transaction('rate', 'readwrite');
@@ -78,4 +79,6 @@ fetch('https://free.currencyconverterapi.com/api/v5/convert').then(response => r
        
     });
 });
+
+
 // }

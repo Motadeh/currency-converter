@@ -1,6 +1,6 @@
 :root {
         --yellow: #ffc600;
-        --black: #272727;
+        --black: #c0c0c0;
 }
 
 html{
@@ -17,7 +17,7 @@ html{
     display: grid;
   justify-content: center;
   align-items: center;
-  border: 5px solid rgba(0, 0, 0, 0.03);
+  /* border: 5px solid rgba(0, 0, 0, 0.03); */
   border-radius: 3px;
   font-size: 35px;
   background-color: transparent; /* best colour */
@@ -31,13 +31,20 @@ html{
     /* border: 10px solid var(--yellow); */
     height: 100vh;
     }
- .item1, .item5{
+.item1, .item5{
     grid-column: span 3;
+    background-color: var(--black);
     
 }
+.item2, .item4{
+    
+    background-color: var(--black);
+}
+
 .item3{
-    background-color: var(--yellow);
+    background-color: #ffffff;
     width: 700px;
+    height: 200px;
     grid-template-columns: 1fr 1fr 1fr;
 }
  .items{
@@ -47,7 +54,7 @@ html{
   border: 5px solid rgba(0, 0, 0, 0.03);
   border-radius: 3px;
   font-size: 35px;
-  background-color: var(--black); /* best colour */
+  /* background-color: var(--black); best colour */
 }
 
  .items1{
@@ -57,9 +64,12 @@ html{
     grid-column: 1 / span 1;
     width: 150px;
 }
- .items3, .items5{
+ .items3{
     grid-column: 2 / span 1;
     width: 200px;
+}
+.items5{
+    grid-column:1/-1;
 }
 
 
