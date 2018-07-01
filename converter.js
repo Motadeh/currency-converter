@@ -2,7 +2,7 @@ function myfunction() {
     let from = document.getElementById("countries").value; ////getElementsByClassName retrieves all elements, you need the first one only with [0]
     let to = document.getElementById("countries2").value; //getElementsByClassName retrieves all elements, you need the first one only with [0]
     let fromAmount = document.getElementById("amount").value;
-    let toAmount = document.getElementById("amount2").value;
+    // let toAmount = document.getElementById("amount2").value;
     // let toAmount        =   document.getElementById("toAmount");
     // you dont need this, you already declared it
     //let fromQuery       =   `${from}`;
@@ -16,7 +16,7 @@ function myfunction() {
             let total = (calc * fromAmount); //calculation
             console.log(total); 
             // toAmount.value = total;
-            document.getElementById("toAmount").value = total;
+            document.getElementById("amount2").innerHTML = total;
 
         dbPromise.then(db => {
             const ty = db.transaction('rates', 'readwrite');
