@@ -18,9 +18,16 @@ let currencies;
  */
 
 
-var dbPromise = idb.open('test2', 1, function(upgradeDb){
-    var tx = upgradeDb.createObjectStore('countries', {keyPath: 'id'});
+var dbPromise = idb.open('test2', 1, upgradeDb => {
+    switch(upgradeDb.oldVersion){
+        case 0:
+        var tx = upgradeDb.createObjectStore('countries', {keyPath: 'id'});
+        case 1:
+        var tw = upgradeDb.createObjectStore('rate', {keyPath: 'id'});
+    }
+    
     tx.put('world', 'hello');
+    tw.put('world', 'hello');
 });
 
 
@@ -48,20 +55,15 @@ fetch('https://free.currencyconverterapi.com/api/v5/currencies').then(response =
 });
 
 
-var dbPromise = idb.open('rate', 1, function(upgradeDb){
-    var tx = upgradeDb.createObjectStore('convert', {keyPath: 'id'});
-    tx.put('world', 'hello');
-});
-
-let rates
+let rates;
 fetch('https://free.currencyconverterapi.com/api/v5/convert').then(response => response.json()).then(function(converts) {
     dbPromise.then(db => {
         if(!db) return;
 
         rates = [converts.results];
 
-        const ty = db.transaction('convert', 'readwrite');
-        const store = ty.objectStore('convert');
+        const ty = db.transaction('rate', 'readwrite');
+        const store = ty.objectStore('rate');
 
         rates.forEach(countryrate => {
             for (let value in countryrate){
