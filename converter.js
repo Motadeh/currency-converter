@@ -31,4 +31,20 @@ function myfunction() {
         return rate_value;
         }
     })
+
+    const url = `https://free.currencyconverterapi.com/api/v5/currencies/${from}`;
+    let data = {
+        Country: 'ayn'
+    }
+
+    let fetchdata = {
+        method: 'POST',
+        body: data,
+        headers: new Headers()
+    }
+
+    fetch(url, fetchdata).then(function(){
+        console.log(res);
+    });
+
 }
