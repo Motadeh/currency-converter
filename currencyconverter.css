@@ -28,38 +28,35 @@ html{
 }
 .items1{
     grid-column: span 2;
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .dropdown1, .items4{
     grid-column: 1 / span 1;
     width: 150px;
+    color: #fff;
 }
 .items3{
     grid-column: 2 / span 1;
-    width: 200px;
+    font-size: 30px;
+    height: 20px;
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .items5{
     grid-column:1/-1;
 }
 .drop1{
     cursor: pointer;
+    color: #fff;
 }
 .dropdown-contents {
     display: none;
     position:absolute;
     min-width: 160px;
-    /* overflow: auto; */
     box-shadow: 0px 8px 16px 0px;
     z-index: 1;
 }
-/* .drop1::before{
-    position :absolute;
-    content: "\25bc";
-    top: 0px;
-    right: -8px;
-    height:20px;
-    width: 20px;
-    pointer-events: none;
-} */
 .show{
     display:block;
 }

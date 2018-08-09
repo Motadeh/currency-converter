@@ -12,7 +12,7 @@ function myfunction() {
             let total = (calc * fromAmount); //calculation
             console.log(total); 
             // toAmount.value = total;
-            document.getElementById("amount2").innerHTML = `${to}${total}`;
+            document.getElementById("amount2").innerHTML = `${to} ${total}`;
 
         dbPromise.then(db => {
             const ty = db.transaction('rates', 'readwrite');
