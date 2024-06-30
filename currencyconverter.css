@@ -15,7 +15,7 @@ html{
 .item3{
     display: grid;
     background-color: #303030;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     border-radius: 15px;
     box-shadow: 3px 3px 5px 6px #000;
 }
