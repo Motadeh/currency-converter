@@ -12,6 +12,13 @@ const flags = `<script src="https://gist.github.com/ibrahimhajjaj/a0e39e7330aebf
 let list_of_flags;
 
 
+document.getElementById("fromAmount")
+  .addEventListener("input", () => myfunction(0));
+
+document.getElementById("toAmount")
+  .addEventListener("input", () => myfunction(1));
+
+
 fetch(url).then(response => response.json()).then(currencyData => {
 
   // fetch(`https://raw.githubusercontent.com/ibrahimhajjaj/currencies-with-flags/refs/heads/main/sample-flag-svg-output.json`)
@@ -52,23 +59,26 @@ const setCurrency = (data, id) => {
 
   if (id == 'curr_list_1') {
 
-    fromcurrency.innerText = flag_data.code;
+    // fromcurrency.innerText = flag_data.code;
 
     newfromcurrency = flag_data.code;
 
     newfromsymbol = flag_data.symbol_native;
 
+    myfunction(0);
+
   } else {
 
-    tocurrency.innerText = flag_data.code;
+    // tocurrency.innerText = flag_data.code;
 
     newtocurrency = flag_data.code;
 
     newtosymbol = flag_data.symbol_native;
+
+    myfunction(1);
   }
 
 
-  getComboA('gvg', 'hjbj');
 
   return (
 
@@ -113,7 +123,7 @@ const mapList = (data, button_name) => {
     return (
 
       // `<li id='curr_list' key=${code}><img src = 'https://raw.githubusercontent.com/ibrahimhajjaj/currencies-with-flags/refs/heads/main${flag}' alt="My Happy SVG"/> ${code}</li>`
-      `<li id=${button_name} value=${code} key=${code} onclick="setCurrency('${en_flag_data}', this.id)"><img src = '${flag}' alt=${code} onclick = 'null'/>${code}</li>`
+      `<li id=${button_name} value=${code} key=${code} class="flex items-center w-44 h-[37px] py-2 px-4" onclick="setCurrency('${en_flag_data}', this.id)"><div class="w-[19.6px]"><img src = '${flag}' alt=${code} onclick = 'null'/></div><div class="w-[30px] pl-4 text-sm font-normal text-gray-900">${code}</div></li>`
     )
   }).join('');
   return un_list;
@@ -171,7 +181,7 @@ function currencyOption(data) {
 }
 
 
-function getComboA(data, name) {
+function getComboA() {
 
   // console.log(tocurrency.value, newfromcurrency)
   fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${apiKey}&currencies=${newtocurrency}&base_currency=${newfromcurrency}`)
@@ -179,8 +189,6 @@ function getComboA(data, name) {
     .then(rates => {
       for (let rate in rates) {
 
-
-        name === 'tocurrency' ? tosymbol = data : fromsymbol = data;
 
         // console.log(tosymbol,fromsymbol)
 
@@ -204,4 +212,64 @@ function getComboA(data, name) {
         return rate_value;
       }
     })
+}
+
+function myfunction(action) {
+  let fromAmount = document.getElementById("fromAmount").value;
+  let toAmount = document.getElementById("toAmount").value;
+  // let fromAmount = document.getElementById("toAmount").value;
+
+  // console.log(from)
+
+  // var apiKey = '0YIyK94BA3GuoZyEq61HGBssDYDdyJg6fGHcsHly'
+
+  fetch(`https://api.freecurrencyapi.com/v1/latest?apikey=${apiKey}&currencies=${newtocurrency}&base_currency=${newfromcurrency}`)
+      .then(response => response.json())
+      .then(rates => {
+
+          let exRate = rates.data[newtocurrency];
+          exRate = parseFloat(exRate).toFixed(2);
+
+          let result = (action == 0) ? (exRate * fromAmount) : (toAmount / exRate); //calculation
+          result = parseFloat(result).toFixed(2);
+
+
+          if (action == 0) {
+              document.getElementById("toAmount").value = (fromAmount == '') ? document.getElementById("fromAmount").value = '' : Math.round(result);
+              document.getElementById("rate_from").innerHTML = `${newfromsymbol} ${fromAmount == '' ? 1 : fromAmount} ${newfromcurrency} =`;
+              document.getElementById("rate_to").innerHTML = `${newtosymbol} ${fromAmount == '' ? exRate : result} ${newtocurrency}`;
+          } else if (action = 1) {
+              document.getElementById("fromAmount").value = (toAmount == '') ? document.getElementById("toAmount").value = '' : Math.round(result);;
+              document.getElementById("rate_from").innerHTML = `${newfromsymbol} ${toAmount == '' ? 1 : result} ${newfromcurrency} =`;
+              document.getElementById("rate_to").innerHTML = `${newtosymbol} ${toAmount == '' ? exRate : toAmount} ${newtocurrency}`;
+          }
+
+          // console.log(typeof(toAmount)); 
+          // toAmount.value = total;
+          
+          console.log(exRate)
+
+          // dbPromise.then(db => {
+          //     const ty = db.transaction('rates', 'readwrite');
+          //     const ratestore = ty.objectStore('rates');
+
+          //     ratestore.put({
+          //         rate: calc,
+          //         id: `${from}_${to}`
+          //     });
+          //     return ty.complete;
+          // });
+          return rate_value;
+
+      })
+
+
+  // let fetchdata = {
+  //     method: 'GET',
+  //     // body: data,
+  //     headers: new Headers()
+  // }
+
+  // fetch(url).then(response => response.json()).then(data => currencyOption(data.results));
+
 }

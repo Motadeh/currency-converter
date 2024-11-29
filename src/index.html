@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="currencyconverter.css">
+    <link rel="stylesheet" href="list.css">
+    <!-- <script>
+            function myfunction() {
+                document.getElementById("fromcurrency").classList.toggle("show");
+            }
+        </script> -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+    <script src="main.js" defer></script>
+    <script src="converter.js"></script>
+    <script src="db.js" type="module"></script>
+    <script src="idb/lib/idb.js"></script>
+    <title>Currency Converter</title>
+</head>
+
+<body>
+    <div class="w-screen">
+        <div
+            class="bg_div bg-cover bg-center absolute top-0 left-0 z-[-1] w-full h-3/6 text-center text-white flex justify-center items-center">
+        </div>
+        <div class="h-full overflow-auto w-full z-10 absolute top-0 left-0">
+            <header
+                class="flex justify-between leading-9 max-h-[89px] items-center py-6 px-[50px] tc pv2 pv3-ns ph5-ns">
+                <div class="flex justify-between leading-9 max-h-[89px] items-center py-6 px-[50px]">
+                    <!-- <img src="header_logo.svg" class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar"> -->
+                    <img src="Logo.svg" alt="avatar">
+                    <h1 class="f3 f3-ns fw6 mid-gray pl2">Niymo</h1>
+                </div>
+            </header>
+            <div class="lower_body">
+
+                <div class="w-full h-12 text-center text-5xl mt-20 font-extrabold text-gray-900">
+                    Niymo Currency Converter
+                </div>
+                <div class="w-full h-8 text-center text-xl my-6 font-normal text-gray-500">
+                    Convert various currencies at the real exchange rate
+                </div>
+                <div class="bg-white m-auto px-12 max-w-[840px] h-[315px] rounded-lg shadow-3xl">
+                    <div class="flex items-center rounded-[3px] text-xl justify-center w-full h-14 pt-8 pb-12">
+                        <img src="SVG.svg" alt="sign">
+                        <div class="pl2 font-bold text-2xl leading-5 text-[#6F64E8]">Convert</div>
+                    </div>
+
+                    <form class="w-[744px] h-[170px]">
+
+                        <div class="w-full h-[81px] flex justify-between">
+                            <div class="h-full self-start">
+                                <option id="option" class="h-[21px] mb-2 font-medium text-sm text-gray-900">
+                                    Amount
+                                </option>
+                                <div class="flex h-[52px]">
+                                    <input id="fromAmount" type="number" placeholder="Enter the amount"
+                                        class="input1 w-[199px] h-full rounded-l-lg bg-gray-50 border border-gray-200 border-r-0 text-base font-normal text-gray-500 py-3.5 px-4 focus:outline-none focus:border-0"
+                                        onchange="myfunction()">
+                                    <button id="currency-button" name="fromcurrency"
+                                        data-dropdown-toggle="dropdown-currency" type="button"
+                                        class="country_list1 w-[126px] h-full rounded-r-lg bg-gray-100 border border-gray-200 border-l-0 text-base font-medium text-gray-900 py-3.5 px-6 flex justify-between items-center">
+                                    </button>
+                                    <ul id="dropdown-currency" aria-labelledby="currency-button"
+                                        class="z-10 hidden shadow-lg rounded-lg overflow-y-scroll overflow-x-hidden w-44 bg-white py-1 h-[156px] border-[1px] border-gray-200">
+                                    </ul>
+                                    <div id="flags" class="hidden"></div>
+                                </div>
+                            </div>
+                            <div class="basis-[10%] self-end justify-items-center">
+                                <!-- <div></div> -->
+                                <img src="swap.svg" alt="swap" />
+                            </div>
+
+                            <div class="h-full">
+                                <option id="option" class="h-[21px] mb-2 font-medium text-sm text-gray-900">
+                                    Converted to
+                                </option>
+                                <div class="flex h-[52px]">
+                                    <input id="toAmount" type="number" placeholder="Enter the amount"
+                                        class="input2 w-[199px] h-full rounded-l-lg bg-gray-50 border border-gray-200 border-r-0 text-base font-normal text-gray-500 py-3.5 px-4 focus:outline-none focus:border-0">
+
+                                    <button id="currency-button-2" name="tocurrency"
+                                        data-dropdown-toggle="dropdown-currency-2" type="button"
+                                        class="country_list2 w-[126px] h-full rounded-r-lg bg-gray-100 border border-gray-200 border-l-0 text-base font-medium text-gray-900 py-3.5 px-6 flex justify-between items-center"></button>
+                                    <ul id="dropdown-currency-2" aria-labelledby="currency-button-2"
+                                        class="z-10 hidden shadow-lg rounded-lg overflow-y-scroll overflow-x-hidden w-44 bg-white py-1 h-[156px] border-[1px] border-gray-200">
+                                    </ul>
+                                    <div id="flags" class="hidden"></div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="flex justify-between items-center mt-[30px]">
+                            <div
+                                class="text-xl h-16 w-[324px] rounded-md py-2 px-3 flex flex-col justify-between items-start bg-[#F3F2FE]">
+                                <div class="text-sm font-normal"><span id="rate_from"></span><span id="rate_to"
+                                        class="font-medium"></span></div>
+                                <div class="text-[11px] leading-4 font-normal">We use the mid-market rate for our
+                                    Converter.
+                                </div>
+                            </div>
+
+                            <div class="bg-[#6F64E8] py-3 px-4 rounded-lg text-base font-semibold text-white"
+                                onclick="myfunction()">Track exchange rate</div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+</body>
+
+</html>
