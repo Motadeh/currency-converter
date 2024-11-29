@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --yellow: #ffc600;
+    --black: #c0c0c0;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* <uniquifier>: Use a unique and descriptive class name */
+/* <weight>: Use a value from 100 to 900 */
+
+.inter-var {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    /* background: url(Pattern.svg) no-repeat; */
+}
+
+body,
+html {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.bg_div {
+    background: url(Pattern.svg) no-repeat, linear-gradient(rgba(46, 28, 242, 0.16), rgba(46, 28, 242, 0.02));
+}
+
+.show {
+    display: block;
+}
+
+/* .lower_body {
+    margin: auto;
+} */
+
+.input1:focus {
+    --tw-ring-color: rgba(111, 100, 232, 1) !important;
+}
+
+.input2:focus {
+    --tw-ring-color: rgba(111, 100, 232, 1) !important;
+}
+
+
+
+/* slesle */
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid rgba(229, 231, 235, 1) !important;
+    border-radius: 0px 8px 8px 0px !important;
+    height: 52px !important;
+}
+
+#select2-countries2-container.select2-selection__rendered {
+    line-height: 52px !important;
+}
