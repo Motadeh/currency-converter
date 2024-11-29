@@ -1,0 +1,16 @@
+.curr_list {
+    padding: 8px 16px;
+    height: 37px;
+    width: 176px;
+}
+
+#curr_list_1, #curr_list_2 {
+    padding: 8px 16px;
+    height: 37px;
+    width: 176px;
+    display: flex;
+}
+
+img {
+    pointer-events: none;
+}
