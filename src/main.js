@@ -52,12 +52,15 @@ let tocurrency = document.getElementById('countries2');
 let tosymbol;
 let fromsymbol;
 
+EU_flag = 'https://raw.githubusercontent.com/ibrahimhajjaj/currencies-with-flags/refs/heads/main/flags/eu.svg'
+
 const setCurrency = (data, id) => {
   // return (
   // console.log(id)
 
 
   let flag_data;
+
 
 
   if (id == 'curr_list_1') {
@@ -74,7 +77,7 @@ const setCurrency = (data, id) => {
 
     return (
 
-      document.getElementById('currency-button').innerHTML = `<div><img src='${list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div>${flag_data.code}</div>`
+      document.getElementById('currency-button').innerHTML = `<div class='w-1/3 flex'><img class='w-4 h-4 rounded-md' src='${newfromcurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3'>${flag_data.code}</div>`
       // console.log('e.target.innerText')
       // )
     )
@@ -93,7 +96,7 @@ const setCurrency = (data, id) => {
 
     return (
 
-      document.getElementById('currency-button-2').innerHTML = `<div><img src='${list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div>${flag_data.code}</div>`
+      document.getElementById('currency-button-2').innerHTML = `<div class='w-1/3 flex'><img class='w-4 h-4 rounded-md' src='${newtocurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3'>${flag_data.code}</div>`
       // console.log('e.target.innerText')
       // )
     )
@@ -124,9 +127,9 @@ const setCurrency = (data, id) => {
 
     return (
 
-      document.getElementById('currency-button').innerHTML = `<div><img src='${list_of_flags.find(flag => flag.code === newfromcurrency).flag}' /></div> <div>${newfromcurrency}</div>`,
+      document.getElementById('currency-button').innerHTML = `<div class='w-1/3 flex'><img class='w-4 h-4 rounded-md' src='${newfromcurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === newfromcurrency).flag}' /></div> <div class='w-2/3'>${newfromcurrency}</div>`,
 
-      document.getElementById('currency-button-2').innerHTML = `<div><img src='${list_of_flags.find(flag => flag.code === newtocurrency).flag}' /></div> <div>${newtocurrency}</div>`
+      document.getElementById('currency-button-2').innerHTML = `<div class='w-1/3 flex'><img class='w-4 h-4 rounded-md' src='${newtocurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === newtocurrency).flag}' /></div> <div class='w-2/3'>${newtocurrency}</div>`
       // console.log('e.target.innerText')
     )
 
@@ -171,7 +174,7 @@ const mapList = (data, button_name) => {
     return (
 
       // `<li id='curr_list' key=${code}><img src = 'https://raw.githubusercontent.com/ibrahimhajjaj/currencies-with-flags/refs/heads/main${flag}' alt="My Happy SVG"/> ${code}</li>`
-      `<li id=${button_name} value=${code} key=${code} class="flex items-center w-44 h-[37px] py-2 px-4" onclick="setCurrency('${en_flag_data}', this.id)"><div class="w-[19.6px]"><img src = '${flag}' alt=${code} onclick = 'null'/></div><div class="w-[30px] pl-4 text-sm font-normal text-gray-900">${code}</div></li>`
+      `<li id=${button_name} value=${code} key=${code} class="flex items-center w-44 h-[37px] py-2 px-4" onclick="setCurrency('${en_flag_data}', this.id)"><div class="w-[19.6px]"><img src = '${code == 'EUR' ? EU_flag : flag}' alt=${code} onclick = 'null'/></div><div class="w-[30px] pl-4 text-sm font-normal text-gray-900">${code}</div></li>`
     )
   }).join('');
   return un_list;
