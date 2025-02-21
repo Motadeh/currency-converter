@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" /> -->
-    <link rel="stylesheet" href="output.css">
-    <link rel="stylesheet" href="currencyconverter.css">
-    <link rel="stylesheet" href="list.css">
+    <link rel="stylesheet" href="./src/output.css">
+    <link rel="stylesheet" href="./src/currencyconverter.css">
+    <link rel="stylesheet" href="./src/list.css">
     <!-- <script>
             function myfunction() {
                 document.getElementById("fromcurrency").classList.toggle("show");
@@ -23,10 +23,10 @@
 
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
-    <script src="main.js" defer></script>
-    <script src="converter.js"></script>
-    <script src="db.js" type="module"></script>
-    <script src="idb/lib/idb.js"></script>
+    <script src="./src/main.js" defer></script>
+    <script src="./src/converter.js"></script>
+    <script src="./src/db.js" type="module"></script>
+    <script src="./src/idb/lib/idb.js"></script>
     <title>Currency Converter</title>
 </head>
 
@@ -40,7 +40,7 @@
                 <div
                     class="flex justify-between leading-9 max-h-[89px] items-center py-6 lg:py-4 px-[4px] lg:px-[30px]">
                     <!-- <img src="header_logo.svg" class="br-100 pa1 ba b--black-10 h3 w3" alt="avatar"> -->
-                    <img src="Logo.svg" alt="avatar">
+                    <img src="./src/Logo.svg" alt="avatar">
                     <h1 class="pl-2">Niymo</h1>
                 </div>
             </header>
@@ -59,7 +59,7 @@
                     class="bg-white m-auto px-4 lg:px-12 py-2 w-5/6 lg:w-[840px] lg:max-w-[840px] h-[60vh] md:h-[62vh] lg:h-[315px] rounded-lg shadow-3xl">
                     <div
                         class="flex items-center rounded-[3px] text-xl justify-center w-full h-10 sm:h-14 pt-4 sm:pt-7 lg:pt-8 pb-4 sm:pb-8 lg:pb-12">
-                        <img src="SVG.svg" alt="sign">
+                        <img src="./src/SVG.svg" alt="sign">
                         <div class="font-bold text-xl sm:text-2xl leading-5 text-[#6F64E8]">Convert</div>
                     </div>
 
@@ -95,7 +95,7 @@
                             <div onclick="swap()"
                                 class="my-3 justify-items-center lg:my-0 lg:basis-[10%] lg:self-end lg:justify-items-center">
                                 <!-- <div></div> -->
-                                <img class="h-[40px] lg:h-auto" src="swap.svg" alt="swap" />
+                                <img class="h-[40px] lg:h-auto" src="./src/swap.svg" alt="swap" />
                             </div>
 
                             <div class="justify-items-start	lg:h-full justify-items-center lg:justify-items-start">
