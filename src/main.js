@@ -54,7 +54,7 @@ let fromsymbol;
 
 EU_flag = 'https://raw.githubusercontent.com/ibrahimhajjaj/currencies-with-flags/refs/heads/main/flags/eu.svg'
 
-const setCurrency = (data, id) => {
+const setCurrency = (data, id, close = false) => {
   // return (
   // console.log(id)
 
@@ -75,9 +75,17 @@ const setCurrency = (data, id) => {
 
     myfunction(0);
 
+    if (close) {
+
+      document.getElementById('dropdown-currency-trigger').click();
+
+      document.getElementById('arrow').setAttribute("d", "m8 10 4 4 4-4");
+
+    }
+
     return (
 
-      document.getElementById('currency-button').innerHTML = `<div class='w-1/3 flex'><img class='w-4 h-4 rounded-md' src='${newfromcurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3'>${flag_data.code}</div>`
+      document.getElementById('currency-button').innerHTML = `<div class='w-1/3 flex cursor-pointer'><img class='w-4 h-4 rounded-md' src='${newfromcurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3'>${flag_data.code}</div>`
       // console.log('e.target.innerText')
       // )
     )
@@ -94,9 +102,17 @@ const setCurrency = (data, id) => {
 
     myfunction(1);
 
+    if (close) {
+
+      document.getElementById('dropdown-currency-trigger-2').click();
+
+      document.getElementById('arrow2').setAttribute("d", "m8 10 4 4 4-4");
+
+    }
+
     return (
 
-      document.getElementById('currency-button-2').innerHTML = `<div class='w-1/3 flex'><img class='w-4 h-4 rounded-md' src='${newtocurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3'>${flag_data.code}</div>`
+      document.getElementById('currency-button-2').innerHTML = `<div class='w-1/3 flex cursor-pointer'><img class='w-4 h-4 rounded-md' src='${newtocurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3'>${flag_data.code}</div>`
       // console.log('e.target.innerText')
       // )
     )
@@ -127,9 +143,9 @@ const setCurrency = (data, id) => {
 
     return (
 
-      document.getElementById('currency-button').innerHTML = `<div class='w-1/3 flex'><img class='w-4 h-4 rounded-md' src='${newfromcurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === newfromcurrency).flag}' /></div> <div class='w-2/3'>${newfromcurrency}</div>`,
+      document.getElementById('currency-button').innerHTML = `<div class='w-1/3 flex cursor-pointer'><img class='w-4 h-4 rounded-md' src='${newfromcurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === newfromcurrency).flag}' /></div> <div class='w-2/3'>${newfromcurrency}</div>`,
 
-      document.getElementById('currency-button-2').innerHTML = `<div class='w-1/3 flex'><img class='w-4 h-4 rounded-md' src='${newtocurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === newtocurrency).flag}' /></div> <div class='w-2/3'>${newtocurrency}</div>`
+      document.getElementById('currency-button-2').innerHTML = `<div class='w-1/3 flex cursor-pointer'><img class='w-4 h-4 rounded-md' src='${newtocurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === newtocurrency).flag}' /></div> <div class='w-2/3'>${newtocurrency}</div>`
       // console.log('e.target.innerText')
     )
 
@@ -174,7 +190,7 @@ const mapList = (data, button_name) => {
     return (
 
       // `<li id='curr_list' key=${code}><img src = 'https://raw.githubusercontent.com/ibrahimhajjaj/currencies-with-flags/refs/heads/main${flag}' alt="My Happy SVG"/> ${code}</li>`
-      `<li id=${button_name} value=${code} key=${code} class="flex items-center w-44 h-[37px] py-2 px-4" onclick="setCurrency('${en_flag_data}', this.id)"><div class="w-[19.6px]"><img src = '${code == 'EUR' ? EU_flag : flag}' alt=${code} onclick = 'null'/></div><div class="w-[30px] pl-4 text-sm font-normal text-gray-900">${code}</div></li>`
+      `<li id=${button_name} value=${code} key=${code} class="flex items-center w-44 h-[37px] py-2 px-4 cursor-pointer" onclick="setCurrency('${en_flag_data}', this.id, true)"><div class="w-[19.6px]"><img src = '${code == 'EUR' ? EU_flag : flag}' alt=${code} onclick = 'null'/></div><div class="w-[30px] pl-4 text-sm font-normal text-gray-900">${code}</div></li>`
     )
   }).join('');
   return un_list;
@@ -214,7 +230,7 @@ function currencyOption(data) {
           });
           return ty.complete;
         });
-        return rate_value;
+        return;
       }
     })
 
@@ -260,7 +276,7 @@ function getComboA() {
           });
           return ty.complete;
         });
-        return rate_value;
+        return;
       }
     })
 }
@@ -305,7 +321,7 @@ function myfunction(action) {
       // console.log(typeof(toAmount)); 
       // toAmount.value = total;
 
-      console.log(exRate)
+      // console.log(exRate)
 
       // dbPromise.then(db => {
       //     const ty = db.transaction('rates', 'readwrite');
@@ -317,7 +333,7 @@ function myfunction(action) {
       //     });
       //     return ty.complete;
       // });
-      return rate_value;
+      return;
 
     })
 
@@ -332,8 +348,28 @@ function myfunction(action) {
 
 }
 
+function arrowChange(num) {
+  // m
+  var d_value = num == 1 ? document.getElementById('arrow').getAttribute("d") : document.getElementById('arrow2').getAttribute("d");
+
+  if (num == 1) {
+    document.getElementById('arrow2').setAttribute("d", "m8 10 4 4 4-4");
+    document.getElementById('arrow').setAttribute("d", d_value == "m8 10 4 4 4-4" ? "m16 14l-4-4l-4 4" : "m8 10 4 4 4-4");
+  } else {
+    document.getElementById('arrow').setAttribute("d", "m8 10 4 4 4-4");
+    document.getElementById('arrow2').setAttribute("d", d_value == "m8 10 4 4 4-4" ? "m16 14l-4-4l-4 4" : "m8 10 4 4 4-4");
+  }
+
+  return
+}
+
 function swap() {
 
   setCurrency(newfromcurrencyData, 'curr_list_3')
 
+}
+
+function reset() {
+  document.getElementById('dropdown-currency').classList.contains('hidden') && document.getElementById('arrow').setAttribute("d", "m8 10 4 4 4-4");
+  document.getElementById('dropdown-currency-2').classList.contains('hidden') && document.getElementById('arrow2').setAttribute("d", "m8 10 4 4 4-4");
 }

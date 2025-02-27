@@ -14,3 +14,25 @@
 img {
     pointer-events: none;
 }
+
+/* .from:hover>.input1 {
+    display: none;
+} */
+
+.input1:focus-within+.country_list1 {
+    border-width: 2px !important;
+    border-color: #F3F4F6 !important;
+}
+
+.input1:focus-within+.country_list1>.country_list1_2 {
+    border: 1px #E5E7EB solid !important;
+}
+
+.input2:focus-within+.country_list2 {
+    border-width: 2px !important;
+    border-color: #F3F4F6 !important;
+}
+
+.input2:focus-within+.country_list2>.country_list2_2 {
+    border: 1px #E5E7EB solid !important;
+}
