@@ -11,10 +11,10 @@
 /* <weight>: Use a value from 100 to 900 */
 
 .inter-var {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
 
 *,
@@ -38,6 +38,20 @@ html {
 
 .bg_div {
     background: url(Pattern.svg) no-repeat, linear-gradient(rgba(46, 28, 242, 0.16), rgba(46, 28, 242, 0.02));
+}
+
+.bg_new {
+    background: url(Pattern.svg) no-repeat, linear-gradient(180deg, rgba(45.83, 28, 242, 0.16) 0%, rgba(45.83, 28, 242, 0.02) 100%)
+}
+
+@media (max-width: 768px) {
+    .bg_new {
+        background: url(Pattern2.svg) no-repeat, linear-gradient(180deg, rgba(45.83, 28, 242, 0.16) 0%, rgba(45.83, 28, 242, 0.02) 100%)
+    }
+
+    header {
+        background: url(Pattern2.svg) no-repeat, linear-gradient(180deg, rgba(45.83, 28, 242, 0.02) 100%, rgba(45.83, 28, 242, 0.02) 100%)
+    }
 }
 
 .show {

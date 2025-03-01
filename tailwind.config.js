@@ -10,7 +10,8 @@ module.exports = {
         '3xl': '0px 4px 12px 0px rgba(39, 35, 80, 0.1)',
       },
       colors: {
-        'regal-purple': 'rgba(111, 100, 232)',
+        // 'regal-purple': 'rgba(111, 100, 232)',
+        'primary': '#111928',
       },
     },
   },

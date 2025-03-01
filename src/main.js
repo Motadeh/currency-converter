@@ -85,7 +85,7 @@ const setCurrency = (data, id, close = false) => {
 
     return (
 
-      document.getElementById('currency-button').innerHTML = `<div class='w-1/3 flex cursor-pointer'><img class='w-4 h-4 rounded-md' src='${newfromcurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3'>${flag_data.code}</div>`
+      document.getElementById('currency-button').innerHTML = `<div class='w-1/3 flex cursor-pointer'><img class='w-4 h-4 rounded-md' src='${newfromcurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3 text-[8px] sm:text-base'>${flag_data.code}</div>`
       // console.log('e.target.innerText')
       // )
     )
@@ -112,7 +112,7 @@ const setCurrency = (data, id, close = false) => {
 
     return (
 
-      document.getElementById('currency-button-2').innerHTML = `<div class='w-1/3 flex cursor-pointer'><img class='w-4 h-4 rounded-md' src='${newtocurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3'>${flag_data.code}</div>`
+      document.getElementById('currency-button-2').innerHTML = `<div class='w-1/3 flex cursor-pointer'><img class='w-4 h-4 rounded-md' src='${newtocurrency == 'EUR' ? EU_flag : list_of_flags.find(flag => flag.code === flag_data.code).flag}' /></div> <div class='w-2/3 text-[8px] sm:text-base'>${flag_data.code}</div>`
       // console.log('e.target.innerText')
       // )
     )
